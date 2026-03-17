@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creator Timezone Dashboard</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#030712">
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/3159/3159066.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-950 text-white font-sans min-h-screen pb-24 selection:bg-emerald-500">
+
+    <header class="bg-gray-900 border-b border-gray-800 p-4 sticky top-0 z-50 shadow-lg">
+        <div class="flex justify-between items-center mb-2">
+            <h1 class="text-xl font-bold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">Creator Alarm</h1>
+            <button id="btn-push" class="text-sm bg-blue-600 hover:bg-blue-500 px-3 py-1 rounded-full transition-colors hidden">
+                <i class="fa-solid fa-bell"></i> Aktifkan Notifikasi
+            </button>
+        </div>
+        <div class="flex justify-between text-xs text-gray-400 font-medium">
+            <div class="flex flex-col"><span class="uppercase text-gray-500 text-[10px]">Waktu Lokal</span><span id="stat-local" class="text-white text-sm">--:--</span></div>
+            <div class="flex flex-col items-center"><span class="uppercase text-gray-500 text-[10px]">Prime Time</span><span id="stat-prime" class="text-emerald-400 text-sm font-bold">0</span></div>
+            <div class="flex flex-col items-end"><span class="uppercase text-gray-500 text-[10px]">Alarm Aktif</span><span id="stat-alarm" class="text-blue-400 text-sm">0</span></div>
+        </div>
+    </header>
+
+    <main class="p-4 max-w-2xl mx-auto">
+        <div id="card-container" class="grid grid-cols-2 gap-4">
+            </div>
+    </main>
+
+    <nav id="bottom-bar" class="fixed bottom-0 w-full bg-gray-900 border-t border-gray-800 p-3 z-50 transition-colors duration-300">
+        <div class="max-w-2xl mx-auto flex justify-between items-center text-sm">
+            <label class="flex items-center cursor-pointer flex-col gap-1">
+                <input type="checkbox" id="toggle-24h" class="sr-only peer" checked>
+                <div class="w-9 h-5 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-emerald-500 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all relative"></div>
+                <span class="text-[10px] text-gray-400 font-bold">24H</span>
+            </label>
+
+            <label class="flex items-center cursor-pointer flex-col gap-1">
+                <input type="checkbox" id="toggle-prime-only" class="sr-only peer">
+                <div class="w-9 h-5 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-blue-500 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all relative"></div>
+                <span class="text-[10px] text-gray-400 font-bold"><i class="fa-solid fa-fire text-orange-400"></i> ONLY</span>
+            </label>
+
+            <div class="flex flex-col gap-1 items-center">
+                <select id="select-sound" class="bg-gray-800 text-xs border border-gray-700 rounded p-1 outline-none focus:border-emerald-500 text-gray-300">
+                    <option value="chime">Chime</option>
+                    <option value="radar">Radar</option>
+                </select>
+                <span class="text-[10px] text-gray-400 font-bold">SOUND</span>
+            </div>
+
+            <label class="flex items-center cursor-pointer flex-col gap-1">
+                <input type="checkbox" id="toggle-dnd" class="sr-only peer">
+                <div class="w-9 h-5 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-red-500 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all relative"></div>
+                <span class="text-[10px] text-gray-400 font-bold"><i class="fa-solid fa-moon"></i> DND</span>
+            </label>
+        </div>
+    </nav>
+
+    <audio id="audio-chime" src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3" preload="auto"></audio>
+    <audio id="audio-radar" src="https://assets.mixkit.co/active_storage/sfx/2870/2870-preview.mp3" preload="auto"></audio>
+
+    <script src="app.js"></script>
+</body>
+</html>
