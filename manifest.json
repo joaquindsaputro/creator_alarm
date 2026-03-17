@@ -1,0 +1,17 @@
+{
+  "name": "Creator Timezone Dashboard",
+  "short_name": "CreatorAlarm",
+  "description": "Smart timezone dashboard for global content creators",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#030712",
+  "theme_color": "#030712",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3159/3159066.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
